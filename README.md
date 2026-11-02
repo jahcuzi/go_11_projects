@@ -6,7 +6,7 @@ I am using [Learn Go Programming by Building 11 Projects – Full Course - YouTu
 ## Why this course
 
 - The course contains high level diagrams
-- Excellent explainations for simple 
+- Excellent explainations for simple projects
 - But lacks testing and best practices
 
 ## Steps for learning
