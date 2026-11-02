@@ -1,21 +1,22 @@
+# 11 Go Projects
 
-# 11 Golang Projects
+I'm following [Learn Go Programming by Building 11 Projects – Full Course](https://youtu.be/jFfo23yIWac) to learn Go.
 
-I am using [Learn Go Programming by Building 11 Projects – Full Course - YouTube](https://youtu.be/jFfo23yIWac) for learning Purposes
+## Why this course?
 
-## Why this course
+- It includes clear, high-level diagrams.
+- It explains beginner-friendly projects well.
+- It gives less emphasis to testing and best practices, so I’ll practice those separately.
 
-- The course contains high level diagrams
-- Excellent explainations for simple projects
-- But lacks testing and best practices
+## Learning process
 
-## Steps for learning
+1. Watch the tutorial from beginning to end without coding.
+2. Rebuild each project without following the video.
+3. Write tests for the code.
+4. Record what I learned and my thoughts.
+5. Ask AI for feedback on my notes and code.
+6. Review the feedback and decide what to implement.
 
-1. Watch Youtube tutorial end to end without coding
-2. Build without using Youtube
-3. testing the code 
-4. Write down my thoughts and my learning
-5. Ask AI for Suggestions about my thoughts and code
-6. Answer or implement AI suggestions
+Each project’s notes are saved as `notes.md` in that project’s folder.
 
-These Notes are in the Project Folder as `notes.md`
+* AI assistant: GPT 6 Luna in VS Code.
