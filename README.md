@@ -17,6 +17,6 @@ I'm following [Learn Go Programming by Building 11 Projects – Full Course](htt
 5. Ask AI for feedback on my notes and code.
 6. Review the feedback and decide what to implement.
 
-Each project’s notes are saved as `notes.md` in that project’s folder.
+Each project’s notes are saved as `readme.md` in that project’s folder.
 
 * AI assistant: GPT 6 Luna in VS Code.
