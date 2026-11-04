@@ -35,3 +35,7 @@
     - Tests use `setMovies(t, testMovies)` to replace the in-memory movie database with test data, then restore its previous contents during test cleanup.
     - `t.Helper` if an assertion fails inside it, it points to the test that called it not the fucntion it resides in.
     - `t.Cleanup(func(){...})` runs the function insdie when test finishes.
+    - `sync.WaitGroup` groups concurrent go routines
+        - `wg.Add(1)` increments the count before starting each go routine
+        - `defer wg.Done()` decrements it when the go routine exits
+        - `wg.Wait()` blocks until the count is zero i.e All goroutines in the groups are finished executing
