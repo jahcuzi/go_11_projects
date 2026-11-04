@@ -23,5 +23,5 @@
 
 ## My thoughts on AI suggestions
 
-1. Concurrency isn’t part of what I’m practicing right now, but I’d like to build a project focused on it later.
+1. Done
 2. Done.
