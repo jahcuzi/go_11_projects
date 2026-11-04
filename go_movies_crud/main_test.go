@@ -2,10 +2,12 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"strings"
+	"sync"
 	"testing"
 
 	"github.com/gorilla/mux"
@@ -349,5 +351,44 @@ func TestDeleteMovieNotFound(t *testing.T) {
 	mu.RUnlock()
 	if !reflect.DeepEqual(gotMovies, initialMovies) {
 		t.Errorf("movies after delete for missing ID = %+v, want unchanged %+v", gotMovies, initialMovies)
+	}
+}
+
+func TestConcurrentCreateMovies(t *testing.T) {
+	setMovies(t, nil)
+	const REQUEST_COUNT = 1000
+	router := testServer()
+	var wg sync.WaitGroup
+	errs := make(chan string, REQUEST_COUNT)
+
+	for range REQUEST_COUNT {
+
+		wg.Go(func() {
+
+			body := `{"isbn":"000", "title":"concurrent test", "director":{"firstname":"fd", "lastname":"ld"}}`
+			req := httptest.NewRequest(http.MethodPost, "/movie", strings.NewReader(body))
+			rec := httptest.NewRecorder()
+
+			router.ServeHTTP(rec, req)
+
+			if rec.Code != http.StatusOK {
+				errs <- fmt.Sprintf("status =%d, want %d", rec.Code, http.StatusOK)
+			}
+		})
+	}
+
+	wg.Wait()
+	close(errs)
+
+	for err := range errs {
+		t.Error(err)
+	}
+
+	mu.RLock()
+	got := len(movies)
+	mu.RUnlock()
+
+	if REQUEST_COUNT != got {
+		t.Errorf("stored %d movies, want %d", got, REQUEST_COUNT)
 	}
 }
